@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Adeola Tosin Amisu — Product Manager</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Geist:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #FAFAF8;
+    --surface: #F4F3EF;
+    --card: #FFFFFF;
+    --border: #E4E3DC;
+    --accent: #3A6B1A;
+    --accent-light: #EBF2E4;
+    --accent-mid: #6A9E42;
+    --text: #1A1A18;
+    --muted: #6B6B63;
+    --hint: #9B9B92;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Geist', system-ui, sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 7%;
+    border-bottom: 1px solid var(--border);
+    background: rgba(250,250,248,0.92);
+    backdrop-filter: blur(10px);
+  }
+  .nav-logo { font-family: var(--serif); font-size: 1.15rem; letter-spacing: 0.01em; color: var(--text); text-decoration: none; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.82rem; font-weight: 400; letter-spacing: 0.02em; transition: color 0.15s; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta {
+    font-size: 0.82rem !important; font-weight: 500 !important;
+    color: var(--accent) !important;
+    border: 1px solid var(--accent);
+    padding: 0.45rem 1.1rem; border-radius: 4px;
+    transition: background 0.15s !important;
+  }
+  .nav-cta:hover { background: var(--accent-light) !important; }
+
+  section { padding: 7rem 7%; }
+
+  .section-label {
+    display: block; font-size: 0.7rem; font-weight: 500;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 1rem;
+  }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+    padding-top: 9rem; border-bottom: 1px solid var(--border);
+  }
+  .hero-location {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 0.78rem; color: var(--hint); letter-spacing: 0.05em; margin-bottom: 2.5rem;
+  }
+  .hero-location::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent-mid); display: inline-block;
+  }
+  h1 {
+    font-family: var(--serif); font-size: clamp(3.2rem, 6.5vw, 5.8rem);
+    line-height: 1.05; font-weight: 400; max-width: 18ch;
+    margin-bottom: 2rem; color: var(--text); letter-spacing: -0.01em;
+  }
+  h1 em { font-style: italic; color: var(--accent); }
+  .hero-bio {
+    font-size: 1.05rem; color: var(--muted); font-weight: 300;
+    max-width: 58ch; margin-bottom: 3rem; line-height: 1.75;
+  }
+  .hero-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 0.7rem 1.5rem; border-radius: 4px; font-family: var(--sans);
+    font-size: 0.85rem; font-weight: 500; cursor: pointer;
+    text-decoration: none; transition: all 0.15s; letter-spacing: 0.01em;
+  }
+  .btn-primary { background: var(--accent); color: #fff; border: 1px solid var(--accent); }
+  .btn-primary:hover { background: #2d5414; border-color: #2d5414; }
+  .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
+  .btn-outline:hover { border-color: var(--muted); background: var(--surface); }
+  .hero-stats {
+    display: flex; margin-top: 5rem; padding-top: 2.5rem; border-top: 1px solid var(--border);
+  }
+  .stat-item { flex: 1; padding-right: 2rem; border-right: 1px solid var(--border); margin-right: 2rem; }
+  .stat-item:last-child { border-right: none; margin-right: 0; }
+  .stat-num { font-family: var(--serif); font-size: 2.8rem; color: var(--text); line-height: 1; }
+  .stat-label { font-size: 0.78rem; color: var(--hint); margin-top: 6px; line-height: 1.4; }
+
+  /* ABOUT */
+  #about { background: var(--surface); border-bottom: 1px solid var(--border); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 6rem; align-items: start; }
+  h2 {
+    font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 400; line-height: 1.15; color: var(--text); letter-spacing: -0.01em;
+  }
+  .about-body { color: var(--muted); font-weight: 300; font-size: 0.95rem; line-height: 1.85; }
+  .about-body p + p { margin-top: 1rem; }
+  .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 2rem; }
+  .skill-pill {
+    padding: 0.5rem 0.9rem; border: 1px solid var(--border); border-radius: 4px;
+    font-size: 0.8rem; color: var(--muted); background: var(--card); transition: all 0.15s;
+  }
+  .skill-pill:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+
+  /* EXPERIENCE */
+  #experience { border-bottom: 1px solid var(--border); }
+  .exp-list { margin-top: 3rem; }
+  .exp-item {
+    display: grid; grid-template-columns: 180px 1fr; gap: 3rem;
+    padding: 2.5rem 0; border-bottom: 1px solid var(--border);
+  }
+  .exp-item:first-child { border-top: 1px solid var(--border); }
+  .exp-date { font-size: 0.78rem; color: var(--hint); margin-bottom: 0.35rem; }
+  .exp-company { font-size: 0.82rem; color: var(--accent); text-decoration: none; font-weight: 500; }
+  .exp-company:hover { text-decoration: underline; }
+  .exp-role { font-weight: 500; font-size: 0.97rem; margin-bottom: 0.6rem; }
+  .exp-desc { color: var(--muted); font-size: 0.88rem; line-height: 1.8; font-weight: 300; margin-bottom: 0.75rem; }
+  .exp-bullets { list-style: none; }
+  .exp-bullets li {
+    font-size: 0.85rem; color: var(--muted); padding: 0.2rem 0;
+    padding-left: 1.1rem; position: relative; font-weight: 300; line-height: 1.7;
+  }
+  .exp-bullets li::before { content: '–'; position: absolute; left: 0; color: var(--accent-mid); }
+
+  /* PROJECTS */
+  #projects { background: var(--surface); border-bottom: 1px solid var(--border); }
+  .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 3rem; }
+  .project-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+    padding: 2rem 2rem 1.75rem; transition: border-color 0.2s, box-shadow 0.2s;
+    display: block; color: inherit; text-decoration: none;
+  }
+  .project-card:hover { border-color: #b5d19b; box-shadow: 0 4px 24px rgba(0,0,0,0.05); }
+  .project-tag {
+    display: inline-block; font-size: 0.68rem; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent); background: var(--accent-light);
+    padding: 3px 8px; border-radius: 3px; margin-bottom: 1.25rem;
+  }
+  .project-card h3 {
+    font-family: var(--serif); font-size: 1.6rem; font-weight: 400;
+    margin-bottom: 0.6rem; letter-spacing: -0.01em;
+  }
+  .project-card p { color: var(--muted); font-size: 0.87rem; line-height: 1.8; font-weight: 300; }
+  .case-block {
+    margin-top: 1.5rem; display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.75rem; padding-top: 1.25rem; border-top: 1px solid var(--border);
+  }
+  .case-title { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--hint); margin-bottom: 0.3rem; }
+  .case-text { font-size: 0.8rem; color: var(--muted); line-height: 1.5; font-weight: 300; }
+  .project-footer {
+    margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--border);
+    display: flex; gap: 1.5rem;
+  }
+  .pmeta-label { font-size: 0.68rem; color: var(--hint); text-transform: uppercase; letter-spacing: 0.08em; }
+  .pmeta-value { font-size: 0.82rem; color: var(--text); margin-top: 2px; }
+
+  /* TOOLS */
+  #tools { border-bottom: 1px solid var(--border); }
+  .tools-group + .tools-group { margin-top: 2rem; }
+  .tools-group-label { font-size: 0.72rem; color: var(--hint); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.75rem; }
+  .tools-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .tool-badge { padding: 0.35rem 0.85rem; border: 1px solid var(--border); border-radius: 100px; font-size: 0.8rem; color: var(--muted); background: var(--card); }
+
+  /* CERTS */
+  #certs { background: var(--surface); border-bottom: 1px solid var(--border); }
+  .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 2.5rem; }
+  .cert-card { border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem 1.5rem; background: var(--card); }
+  .cert-issuer { font-size: 0.7rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.35rem; }
+  .cert-name { font-size: 0.88rem; color: var(--text); font-weight: 500; line-height: 1.4; }
+  .cert-year { font-size: 0.75rem; color: var(--hint); margin-top: 0.25rem; }
+
+  /* CONTACT */
+  #contact { text-align: center; }
+  #contact h2 { max-width: 22ch; margin: 0 auto 1rem; }
+  .contact-sub { color: var(--muted); max-width: 44ch; margin: 0 auto 2.5rem; font-weight: 300; font-size: 0.95rem; }
+  .contact-links { display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap; }
+  .contact-email { font-size: 0.85rem; color: var(--hint); margin-top: 1.5rem; }
+  .contact-email a { color: var(--accent); text-decoration: none; }
+  .contact-email a:hover { text-decoration: underline; }
+
+  footer {
+    padding: 1.75rem 7%; border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.78rem; color: var(--hint); background: var(--surface);
+  }
+
+  .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.55s ease, transform 0.55s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 800px) {
+    nav { padding: 1rem 5%; }
+    .nav-links { gap: 1.25rem; }
+    .nav-links li:not(:last-child) { display: none; }
+    section { padding: 5rem 5%; }
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .exp-item { grid-template-columns: 1fr; gap: 0.25rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .case-block { grid-template-columns: 1fr; }
+    .hero-stats { flex-direction: column; gap: 1.5rem; }
+    .stat-item { border-right: none; margin-right: 0; padding-right: 0; border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; }
+    .stat-item:last-child { border-bottom: none; }
+    h1 { font-size: 2.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">Adeola Tosin Amisu</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="https://drive.google.com/file/d/1aCSd_466yu7MQtjV2p2ry7EI8kvA1p5f/view?usp=sharing" target="_blank" class="nav-cta">Resume ↗</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-location">Stockholm, Sweden · Open to English-speaking roles</div>
+  <h1>Product Manager. <em>Builder</em> of scalable digital products.</h1>
+  <p class="hero-bio">
+    Product Manager with 4+ years of experience driving product strategy and execution across internal admin platforms, web, and mobile. Explored LLM-based chatbot workflows for user interaction and optimised workflows through automation, stakeholder management, pricing, payments, and analytics.
+  </p>
+  <div class="hero-actions">
+    <a href="#projects" class="btn btn-primary">View My Work</a>
+    <a href="https://www.linkedin.com/in/ade-lola/" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
+    <a href="https://drive.google.com/file/d/1aCSd_466yu7MQtjV2p2ry7EI8kvA1p5f/view?usp=sharing" target="_blank" class="btn btn-outline">Resume ↗</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">4+</div>
+      <div class="stat-label">Years in product</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Products shipped end-to-end</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">50%</div>
+      <div class="stat-label">Projected conversion lift at BuyLocal</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">30%</div>
+      <div class="stat-label">Faster trial-to-paid at Bank N Book</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid fade-in">
+    <div>
+      <span class="section-label">About</span>
+      <h2>Turning complex problems into clear, working products.</h2>
+    </div>
+    <div>
+      <div class="about-body">
+        <p>I'm a Product Manager based in Stockholm, focused on SaaS, PaaS, internal tools, and B2B2C platforms. I work at the intersection of user needs, business goals, and technical constraints — from early discovery through to delivery and QA.</p>
+        <p>My experience spans AI-powered chatbot workflows, pricing and payment systems, admin tooling, and marketplace architecture. I write PRDs, own roadmaps, facilitate Agile ceremonies, and collaborate closely with engineering, design, and business stakeholders.</p>
+        <p>Currently seeking English-speaking product roles in Stockholm and across Europe.</p>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-pill">Product Strategy & Roadmapping</div>
+        <div class="skill-pill">PRD Writing</div>
+        <div class="skill-pill">Agile / Scrum</div>
+        <div class="skill-pill">User Research & Discovery</div>
+        <div class="skill-pill">LLM & AI Workflows</div>
+        <div class="skill-pill">API & DB Schema Awareness</div>
+        <div class="skill-pill">Analytics & KPI Tracking</div>
+        <div class="skill-pill">Stakeholder Management</div>
+        <div class="skill-pill">Cross-functional Leadership</div>
+        <div class="skill-pill">End-to-end QA</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <span class="section-label">Experience</span>
+  <h2>Where I've worked</h2>
+  <div class="exp-list fade-in">
+
+    <div class="exp-item">
+      <div>
+        <div class="exp-date">Apr 2025 – Present</div>
+        <a href="https://www.buylocalafrica.org" class="exp-company" target="_blank">BuyLocal Africa ↗</a>
+      </div>
+      <div>
+        <div class="exp-role">Product Manager</div>
+        <div class="exp-desc">Owned and scaled internal operator tooling and admin platforms supporting pricing, logistics, and financial workflows for a bulk e-commerce platform.</div>
+        <ul class="exp-bullets">
+          <li>Defined a profit model (percentage-based and fixed markup) with engineering, enabling automated margin computation within the admin platform.</li>
+          <li>Led implementation of Split Payment and Pay-for-Me features — projected to boost user adoption by up to 50% and reduce order processing time by 85%.</li>
+          <li>Facilitated full sprint ceremonies and conducted pre- and post-release QA across functionality, usability, and edge cases.</li>
+          <li>Defined reusable workflows and components to support scalability across internal tools.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div>
+        <div class="exp-date">Oct 2023 – Mar 2025</div>
+        <a href="https://www.wacpeople.com/" class="exp-company" target="_blank">WAC People ↗</a>
+      </div>
+      <div>
+        <div class="exp-role">Product UX & Research Specialist</div>
+        <div class="exp-desc">Worked across discovery, validation, and delivery to shape data-informed product decisions.</div>
+        <ul class="exp-bullets">
+          <li>Led discovery initiatives (interviews, surveys) to identify operator pain points and improve workflow efficiency.</li>
+          <li>Maintained structured PRDs, user stories, and roadmaps — improving team delivery speed by 20%.</li>
+          <li>Gathered inputs from users, business stakeholders, and technical constraints to guide prioritisation.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div>
+        <div class="exp-date">Oct 2022 – Sep 2023</div>
+        <a href="http://getvendorstack.com/" class="exp-company" target="_blank">Vendorstack ↗</a>
+      </div>
+      <div>
+        <div class="exp-role">Product Manager Intern</div>
+        <div class="exp-desc">Supported early-stage SaaS product development with a focus on validation, usability, and scalable foundations.</div>
+        <ul class="exp-bullets">
+          <li>Conducted user research and market validation to inform MVP scope and feature prioritisation.</li>
+          <li>Collaborated cross-functionally to refine usability flows and improve product clarity.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <span class="section-label">Key Projects</span>
+  <h2>Products I've owned</h2>
+  <div class="projects-grid fade-in">
+
+    <div class="project-card">
+      <div class="project-tag">B2B2C · SaaS · AI</div>
+      <h3>Beproactif</h3>
+      <p>AI-powered corporate wellness platform with mobile and web applications. Enables organisations to track, improve, and reward employee wellbeing through intelligent tools and an expert marketplace.</p>
+      <div class="case-block">
+        <div class="case-item">
+          <div class="case-title">Problem</div>
+          <div class="case-text">Fragmented wellness tracking across enterprise workplaces</div>
+        </div>
+        <div class="case-item">
+          <div class="case-title">Solution</div>
+          <div class="case-text">AI-driven centralised platform with chatbot, health tracking & marketplace</div>
+        </div>
+        <div class="case-item">
+          <div class="case-title">My Role</div>
+          <div class="case-text">Led discovery, owned MVP scope, PRDs and feature specs across mobile & web</div>
+        </div>
+      </div>
+      <div class="project-footer">
+        <div>
+          <div class="pmeta-label">Platform</div>
+          <div class="pmeta-value">Mobile + Web</div>
+        </div>
+        <div>
+          <div class="pmeta-label">Focus</div>
+          <div class="pmeta-value">AI, Wellness</div>
+        </div>
+        <div>
+          <div class="pmeta-label">Stage</div>
+          <div class="pmeta-value">Prototype on request</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-tag">B2C · E-commerce · Internal Tools</div>
+      <h3>BuyLocal Africa</h3>
+      <p>Bulk e-commerce platform enabling users to unlock distributor pricing through quantity-based purchasing. Built scalable internal admin tooling for pricing, logistics, and financial workflows.</p>
+      <div class="case-block">
+        <div class="case-item">
+          <div class="case-title">Problem</div>
+          <div class="case-text">Complex pricing and logistics workflows lacking automation</div>
+        </div>
+        <div class="case-item">
+          <div class="case-title">Solution</div>
+          <div class="case-text">Modular admin platform with automated margin logic and Split Payment features</div>
+        </div>
+        <div class="case-item">
+          <div class="case-title">Impact</div>
+          <div class="case-text">Projected 50% adoption lift, 85% faster order processing</div>
+        </div>
+      </div>
+      <div class="project-footer">
+        <div>
+          <div class="pmeta-label">Type</div>
+          <div class="pmeta-value">Internal Tools</div>
+        </div>
+        <div>
+          <div class="pmeta-label">Focus</div>
+          <div class="pmeta-value">Pricing, Payments</div>
+        </div>
+        <div>
+          <div class="pmeta-label">Live</div>
+          <div class="pmeta-value"><a href="https://www.buylocalafrica.org" target="_blank" style="color:var(--accent);text-decoration:none;">Visit site ↗</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-tag">B2B · SaaS · Booking</div>
+      <h3>Bank N Book</h3>
+      <p>Booking and business management platform for service professionals. Contributed to onboarding redesign, backlog prioritisation, and analytics dashboard concepts for growth insights.</p>
+      <div class="case-block">
+        <div class="case-item">
+          <div class="case-title">Problem</div>
+          <div class="case-text">Slow trial-to-paid conversion and unclear onboarding experience</div>
+        </div>
+        <div class="case-item">
+          <div class="case-title">Solution</div>
+          <div class="case-text">Redesigned onboarding flow in partnership with Sales & Marketing</div>
+        </div>
+        <div class="case-item">
+          <div class="case-title">Impact</div>
+          <div class="case-text">30% faster trial-to-paid conversion</div>
+        </div>
+      </div>
+      <div class="project-footer">
+        <div>
+          <div class="pmeta-label">Platform</div>
+          <div class="pmeta-value">Web App</div>
+        </div>
+        <div>
+          <div class="pmeta-label">Focus</div>
+          <div class="pmeta-value">Onboarding, Analytics</div>
+        </div>
+        <div>
+          <div class="pmeta-label">Live</div>
+          <div class="pmeta-value"><a href="https://www.banknbook.com" target="_blank" style="color:var(--accent);text-decoration:none;">Visit site ↗</a></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section id="tools">
+  <span class="section-label">Tools & Technologies</span>
+  <h2>My toolkit</h2>
+  <div style="margin-top: 2.5rem;" class="fade-in">
+    <div class="tools-group">
+      <div class="tools-group-label">Product & Project Management</div>
+      <div class="tools-row">
+        <span class="tool-badge">Jira</span>
+        <span class="tool-badge">Confluence</span>
+        <span class="tool-badge">Notion</span>
+      </div>
+    </div>
+    <div class="tools-group">
+      <div class="tools-group-label">Design & Prototyping</div>
+      <div class="tools-row">
+        <span class="tool-badge">Figma</span>
+        <span class="tool-badge">FigJam</span>
+        <span class="tool-badge">Lovable</span>
+        <span class="tool-badge">Loom</span>
+      </div>
+    </div>
+    <div class="tools-group">
+      <div class="tools-group-label">Analytics & Engagement</div>
+      <div class="tools-row">
+        <span class="tool-badge">Mixpanel</span>
+        <span class="tool-badge">Amplitude</span>
+        <span class="tool-badge">Hotjar</span>
+        <span class="tool-badge">Zoho Sales IQ</span>
+        <span class="tool-badge">Zendesk</span>
+        <span class="tool-badge">Freshchat</span>
+        <span class="tool-badge">Postman</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTS -->
+<section id="certs">
+  <span class="section-label">Certifications</span>
+  <h2>Continuous learning</h2>
+  <div class="certs-grid fade-in">
+    <div class="cert-card">
+      <div class="cert-issuer">ProductDive</div>
+      <div class="cert-name">Certified Product Manager (CPM)</div>
+      <div class="cert-year">2022</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-issuer">Product School</div>
+      <div class="cert-name">Product-Led Growth Micro-Certification</div>
+      <div class="cert-year">2022</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-issuer">SCRUMstudy</div>
+      <div class="cert-name">Scrum Fundamentals Certified</div>
+      <div class="cert-year">2024</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-issuer">IBM</div>
+      <div class="cert-name">Introduction to Artificial Intelligence</div>
+      <div class="cert-year">2024</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-issuer">Product School</div>
+      <div class="cert-name">Artificial Intelligence Micro-Certification</div>
+      <div class="cert-year">2025</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <span class="section-label">Contact</span>
+  <h2>Let's build something impactful.</h2>
+  <p class="contact-sub">Open to product roles in Stockholm and across Europe. I'd love to connect.</p>
+  <div class="contact-links">
+    <a href="mailto:amisuadeola@gmail.com" class="btn btn-primary">Send me an email</a>
+    <a href="https://www.linkedin.com/in/ade-lola/" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
+    <a href="https://drive.google.com/file/d/1aCSd_466yu7MQtjV2p2ry7EI8kvA1p5f/view?usp=sharing" target="_blank" class="btn btn-outline">View Resume ↗</a>
+  </div>
+  <p class="contact-email">Or reach me directly at <a href="mailto:amisuadeola@gmail.com">amisuadeola@gmail.com</a></p>
+</section>
+
+<footer>
+  <span>Adeola Tosin Amisu — Product Manager</span>
+  <span>Stockholm, Sweden · 2025</span>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
